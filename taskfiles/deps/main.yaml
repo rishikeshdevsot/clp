@@ -74,7 +74,7 @@ tasks:
       - task: "catch2"
       - task: "date"
       - task: "fmt"
-      - task: "libarchive"
+      # - task: "libarchive"
       - task: "liblzma"
       - task: "log-surgeon"
       - task: "lz4"
@@ -312,20 +312,20 @@ tasks:
   # /usr/bin/ld: /home/lion/yscope/clp/build/deps/core/LibArchive-install/lib/libarchive.a(archive_read_support_filter_gzip.c.o): undefined reference to symbol 'inflateEnd'
   # /usr/bin/ld: /usr/lib64/libz.so.1: error adding symbols: DSO missing from command line
   #
-  libarchive:
-    internal: true
-    run: "once"
-    cmds:
-      - task: "utils:install-remote-cmake-lib"
-        vars:
-          CMAKE_GEN_ARGS:
-            - "-DCMAKE_BUILD_TYPE=Release"
-            - "-DCMAKE_INSTALL_MESSAGE=LAZY"
-            - "-DENABLE_EXPAT=OFF"
-            - "-DENABLE_OPENSSL=OFF"
-          LIB_NAME: "LibArchive"
-          TARBALL_SHA256: "191b5b24811499d5c2e5efa3248975fa6daa5e6a227700cc7b8e54d6d7c06eef"
-          TARBALL_URL: "https://github.com/libarchive/libarchive/releases/download/v3.8.0/libarchive-3.8.0.tar.gz"
+  # libarchive:
+  #   internal: true
+  #   run: "once"
+  #   cmds:
+  #     - task: "utils:install-remote-cmake-lib"
+  #       vars:
+  #         CMAKE_GEN_ARGS:
+  #           - "-DCMAKE_BUILD_TYPE=Release"
+  #           - "-DCMAKE_INSTALL_MESSAGE=LAZY"
+  #           - "-DENABLE_EXPAT=OFF"
+  #           - "-DENABLE_OPENSSL=OFF"
+  #         LIB_NAME: "LibArchive"
+  #         TARBALL_SHA256: "191b5b24811499d5c2e5efa3248975fa6daa5e6a227700cc7b8e54d6d7c06eef"
+  #         TARBALL_URL: "https://github.com/libarchive/libarchive/releases/download/v3.8.0/libarchive-3.8.0.tar.gz"
 
   liblzma:
     internal: true
