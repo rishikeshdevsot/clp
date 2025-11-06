@@ -1,0 +1,29 @@
+x:(?<ipx>\d{1,4}.\d{1,4}.\d{1,4}.\d{1,4}) \- \- (?<timestampx>\[\d{2}/[A-Z][a-z]{2}/\d{4}:\d{2}:\d{2}:\d{2})
+// +\d{4}\]) 
+//"(?<request>(GET)|(POST)) (?<link>((/[a-zA-Z\-\.]+)+)) 
+//timestamp:\[\d{2}/[A-Z][a-z]{2}/\d{4}:\d{2}:\d{2}:\d{2} +\d{4}
+//timestamp:\[\d{2}/[A-Z][a-z]{2}/\d{4}:\d{2}:\d{2}:\d{2}
+
+// Delimiters
+delimiters: \t\r\n:,!;%"
+
+// Capture
+//capture:user_(?<userID>[0-9]+)
+
+// First set of variables
+//int:\-{0,1}[0-9]+
+float:\-{0,1}[0-9]+\.[0-9]+
+
+// Second set of variables
+hex:[a-fA-F]+
+//hasNumber:.*\d.*
+//equals:.*=.*[a-zA-Z0-9].*
+
+// Log Level
+loglevel:(INFO)|(DEBUG)|(WARN)|(ERROR)|(TRACE)|(FATAL)
+//request:(GET)|(POST)|(OPTIONS)
+request:(GET)|(POST)|(PUT)|(DELETE)|(HEAD)|(OPTIONS)|(PATCH)|(CONNECT)|(TRACE)
+user_agent:Mozilla/[^ \n][^\n]+
+//link:(/[a-zA-Z0-9\-\.]+)+
+url_link:/[^ \?\n]*
+response:\d{3}
