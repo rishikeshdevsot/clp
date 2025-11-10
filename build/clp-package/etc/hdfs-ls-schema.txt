@@ -1,0 +1,58 @@
+// schema delimiters
+delimiters: \t\r\n:,!;%@/\(\)\[\]\.
+
+  // schema timestamps
+timestamp:\d{4}\-\d{2}\-\d{2} \d{2}:\d{2}:\d{2},\d{3}
+
+// schema variables
+loglevel:(DEBUG)|(INFO)|(WARN)|(ERROR)|(FATAL)
+LogSurgeonHiddenVariables1:(?<system_exception_type>([a-zA-Z0-9_][a-zA-Z0-9_$]*\.)+[a-zA-Z0-9_]*Exception): (?<system_exception_msg>[ \ta-zA-Z0-9\.,:;_\-/\\\[\]\(\)\<\>=\+\*!\?@#$%\^&\|~]+)
+LogSurgeonHiddenVariables2:(\s{1,4}at (?<system_stack>([a-zA-Z0-9_][a-zA-Z0-9_$]*\.)+([a-zA-Z0-9_][a-zA-Z0-9_$]+)\([a-zA-Z0-9 \._\-]+(:\-{0,1}[0-9]+){0,1}\))( ~\[(([a-zA-Z0-9 \._\-]+)|(\?)):(\-{0,1}[0-9]+)(\?)\]){0,1})
+LogSurgeonHiddenVariables3:RESOURCE=(?<resource_url>file:[a-zA-Z0-9\.,:;_\-/\\\[\]\(\)\<\>=\+\*!\?@#$%\^&\|~]+)
+LogSurgeonHiddenVariables4:resource=(?<resource_path>file:[a-zA-Z0-9\.,:;_\-/\\\[\]\(\)\<\>=\+\*!\?@#$%\^&\|~]+)
+LogSurgeonHiddenVariables5:REQUEST (?<request_path>/[a-zA-Z0-9\.,:;_\-/\\\[\]\(\)\<\>=\+\*!\?@#$%\^&\|~]+) on
+LogSurgeonHiddenVariables6:RESPONSE (?<response_path>/[a-zA-Z0-9\.,:;_\-/\\\[\]\(\)\<\>=\+\*!\?@#$%\^&\|~]+) +(?<http_status>\-{0,1}[0-9]+)
+LogSurgeonHiddenVariables7:TLD search of (?<tld_path>file:[a-zA-Z0-9\.,:;_\-/\\\[\]\(\)\<\>=\+\*!\?@#$%\^&\|~]+)
+LogSurgeonHiddenVariables8:(?<class_name>([a-zA-Z0-9_][a-zA-Z0-9_$]*\.)+([a-zA-Z0-9_][a-zA-Z0-9_$]+))@(?<object_id>[0-9a-fA-F]+)
+LogSurgeonHiddenVariables9:(?<simple_class>[A-Z][a-zA-Z0-9]+)@(?<obj_id>[0-9a-fA-F]+)
+LogSurgeonHiddenVariables10:exit code (?<exit_code>\-{0,1}[0-9]+)
+LogSurgeonHiddenVariables11:hdfs://(?<hdfs_host>[a-zA-Z0-9\.\-]+):(?<hdfs_port>\d{1,5})
+LogSurgeonHiddenVariables12:(?<ip>(((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([1-9]{0,1}[0-9]))\.){3}(25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([1-9]{0,1}[0-9])):(?<port>\d{1,5})
+LogSurgeonHiddenVariables13:(?<ip_address>(((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([1-9]{0,1}[0-9]))\.){3}(25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([1-9]{0,1}[0-9]))
+LogSurgeonHiddenVariables14:(?<host>[a-zA-Z0-9\-]+)/(?<host_ip>(((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([1-9]{0,1}[0-9]))\.){3}(25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([1-9]{0,1}[0-9]))
+LogSurgeonHiddenVariables15:registered UNIX signal handlers for \[(?<signals>[A-Z, ]+)\]
+LogSurgeonHiddenVariables16:args = \[(?<args>[\-a-zA-Z0-9, ]+)\]
+LogSurgeonHiddenVariables17:Session ID (?<session_id>[a-zA-Z0-9]+)
+LogSurgeonHiddenVariables18:MD5 (?<md5_hash>[0-9a-fA-F]{32})
+LogSurgeonHiddenVariables19:(?<jar_file>[a-zA-Z0-9 \._\-]+)\.jar
+LogSurgeonHiddenVariables20:version = (?<version>[0-9\.\-a-zA-Z]+)
+LogSurgeonHiddenVariables21:\-r (?<commit_hash>[a-f0-9]+)
+LogSurgeonHiddenVariables22:compiled by '(?<compiled_by>[a-zA-Z0-9]+)'
+LogSurgeonHiddenVariables23:on (?<compile_date>[0-9T:Z]+)
+LogSurgeonHiddenVariables24:java = (?<java_version>[0-9\._]+)
+LogSurgeonHiddenVariables25:Setting (?<config_key>[a-zA-Z0-9\.\-_]+) to (?<config_value>[a-zA-Z0-9\.\-_:/]+)
+LogSurgeonHiddenVariables26:impl=(?<impl_class>([a-zA-Z0-9_][a-zA-Z0-9_$]*\.)+([a-zA-Z0-9_][a-zA-Z0-9_$]+))
+LogSurgeonHiddenVariables27:cacheTimeout=(?<cache_timeout>\-{0,1}[0-9]+)
+LogSurgeonHiddenVariables28:warningDeltaMs=(?<warning_delta>\-{0,1}[0-9]+)
+LogSurgeonHiddenVariables29:STARTUP_MSG: (?<startup_msg>[ \ta-zA-Z0-9\.,:;_\-/\\\[\]\(\)\<\>=\+\*!\?@#$%\^&\|~]+)
+LogSurgeonHiddenVariables30:(?<memory_size>\-{0,1}[0-9]+) bytes
+LogSurgeonHiddenVariables31:capacity = (?<capacity>\-{0,1}[0-9]+)
+LogSurgeonHiddenVariables32:load factor = (?<load_factor>\-{0,1}[0-9]+\.[0-9]+)
+LogSurgeonHiddenVariables33:\[(?<thread_name>[^\]]+)\]
+LogSurgeonHiddenVariables34:is (?<bool_key>[a-zA-Z]+):(?<bool_value>(true)|(false))
+LogSurgeonHiddenVariables35:Hadoop:service=(?<service>[a-zA-Z]+),name=(?<name>[a-zA-Z]+)
+LogSurgeonHiddenVariables36:blk_(?<block_id>\-{0,1}[0-9]+)
+LogSurgeonHiddenVariables37:BP\-(?<block_pool_id>[0-9\-]+)
+LogSurgeonHiddenVariables38:DatanodeInfoWithStorage\[(?<datanode_info>[^\]]+)\]
+LogSurgeonHiddenVariables39:STATE\* Safe mode is (?<safemode_state>(ON)|(OFF))
+LogSurgeonHiddenVariables40:(?<percentage>\-{0,1}[0-9]+\.[0-9]+)%
+LogSurgeonHiddenVariables41:(?<time_value>\-{0,1}[0-9]+)ms
+LogSurgeonHiddenVariables42:(?<time_value_1>\-{0,1}[0-9]+)s
+LogSurgeonHiddenVariables43:(?<seconds>\-{0,1}[0-9]+) seconds
+LogSurgeonHiddenVariables44:0x(?<memory_addr>[0-9a-fA-F]+)
+LogSurgeonHiddenVariables45:(?<operation>(RECEIVED)|(SENT)|(CONNECTED)|(DISCONNECTED))
+LogSurgeonHiddenVariables46:File operation (?<file_operation>(CREATE)|(DELETE)|(RENAME)|(APPEND)|(TRUNCATE))
+LogSurgeonHiddenVariables47:neededReplications = (?<needed>\-{0,1}[0-9]+) pendingReplications = (?<pending>\-{0,1}[0-9]+)
+LogSurgeonHiddenVariables48:as:(?<username>[a-zA-Z0-9]+) \(auth:(?<auth>[A-Z]+)\)
+LogSurgeonHiddenVariables49:@(?<annotation>([a-zA-Z0-9_][a-zA-Z0-9_$]*\.)+([a-zA-Z0-9_][a-zA-Z0-9_$]+))
+LogSurgeonHiddenVariables50:(?<java_class>([a-zA-Z0-9_][a-zA-Z0-9_$]*\.)+([a-zA-Z0-9_][a-zA-Z0-9_$]+))
